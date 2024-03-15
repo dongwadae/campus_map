@@ -1,0 +1,245 @@
+/*공통*/
+html {
+  -webkit-text-size-adjust: none;
+}
+html,
+body {
+  direction: ltr;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: keep-all;
+  transition: background-color 0.6s;
+  transition: color 0.6s;
+}
+body,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+table,
+th,
+td,
+form,
+fieldset,
+legend,
+textarea,
+input,
+select,
+textarea,
+button,
+figure,
+figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+img,
+form,
+fieldset,
+svg {
+  border: 0;
+  vertical-align: top;
+}
+
+input,
+button,
+select {
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  margin: -1px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+.blind {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+body,
+textarea,
+input,
+select,
+textarea,
+button {
+  font-family: "Pretendard", Arial, sans-serif;
+  font-weight: 400;
+  outline: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 670px) {
+  html,
+  body {
+    font-size: 15px;
+  }
+}
+
+.checkbox {
+  width: 60px;
+  height: 30px;
+  background-color: #c6cace;
+  border-radius: 30px;
+  position: relative;
+  color: black;
+  overflow: hidden;
+  transition: 0.6s;
+}
+
+#lightSwitch {
+  display: none;
+}
+
+.checkbox .toggle {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border-radius: 30px;
+  left: 0px;
+  cursor: pointer;
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: 0.6s;
+}
+
+.checkbox .slide {
+  width: 60px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: 0.6s;
+}
+
+.checkbox .slide .text {
+  font-size: 15px;
+  font-weight: 700;
+  z-index: 100;
+  cursor: pointer;
+  transition: 0.6s;
+}
+
+.check:checked + .checkbox .slide .toggle {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+  transition: 0.6s;
+  background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
+}
+
+.check:checked + .checkbox .slide {
+  transition: 0.6s;
+  background-color: #444;
+  color: #fff;
+}
+
+.stop-dragging {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.switch {
+    justify-content: end;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+}
+
+.bg-dark {
+    background-color: #2b2b2b;
+}
+
+.bg-light {
+    background-color: white;
+}
+
+.text-light {
+    color: black;
+}
+
+.text-dark {
+    color: white;
+}
+
+button {
+    color: currentColor;
+}
+
+.bg-dark li:hover,
+.bg-dark li.on {
+    background-color: #333 !important;
+}
+
+.bg-dark li,
+.bg-dark ul,
+.bg-dark input {
+  border-color: #6f6f6f !important;
+  transition: color 0.6s;
+}
+
+.bg-dark input {
+  background-color: #2b2b2b;
+  color: #fff;
+  transition: background-color 0.6s;
+}
+
+.bg-light input {
+  transition: background-color 0.6s;
+}
+
+.bg-dark input::placeholder {
+  color: #848484;
+  transition: color 0.6s;
+}

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동국대학교 WISE캠퍼스 - 캠퍼스맵</title>
+
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/map.css"/>
+
+    <!-- ** Plugins ** -->
+    <!-- Pretendard font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- Bootstrap icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!--swiper-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- ** Scripts ** -->
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- printThis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.js" integrity="sha512-Fd3EQng6gZYBGzHbKd52pV76dXZZravPY7lxfg01nPx5mdekqS8kX4o1NfTtWiHqQyKhEGaReSf4BrtfKc+D5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- slick -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <!-- Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+  </head>
+  <body class="stop-dragging">
+      <header class="header bg-dark text-dark">
+        <div class="header_wrap">
+          <div class="logo"><img src="/images/logo.png"/>
+            <a><span>WISE | 캠퍼스맵</span></a>
+          </div>
+          <!-- LIGHT SWITCH -->
+          <div class="switch stop-dragging">
+            <input class="check" type="checkbox" id="lightSwitch">
+            <div class="checkbox">
+              <label for="lightSwitch" class="slide">
+                <label for="lightSwitch" class="toggle"></label>
+                <label for="lightSwitch" class="text"><i class="bi bi-brightness-high-fill"></i></label>
+                <label for="lightSwitch" class="text"><i class="bi bi-moon-fill"></i></label>
+              </label>
+            </div>
+          </div>
+          <!-- /LIGHT SWITCH -->
+        </div>
+      </header>
+
+    <div class="map_wrap">
+      <div id="map"></div>
+    </div>
+
+    <div class="campus_info bg-dark text-dark">
+      <button class="slide_btn bg-dark"><span class="blind">버튼</span></button>
+      <div class="campus_search">
+        <input
+          type="text"
+          name="searchKeyword"
+          id="searchKeyword"
+          onkeyup="camSearch()"
+          placeholder="검색어 입력"
+        />
+      </div>
+      <ul id="cam-list" class="campus_list campus_scroll">
+        <li
+          onclick="fn_openInfo(1,35.86175815452479,129.1934285475951)"
+          id="campus_list_1"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">1</span>
+            </div>
+            <span class="cp_tit"><a>원효관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(2,35.86248983467,129.194561169428)"
+          id="campus_list_2"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">2</span>
+            </div>
+            <span class="cp_tit"><a>도서관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(3,35.862045527397,129.196192679837)"
+          id="campus_list_3"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">3</span>
+            </div>
+            <span class="cp_tit"><a>학생회관, 스페이스 위콤버</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(4,35.8625172239496,129.197251736296)"
+          id="campus_list_4"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">4</span>
+            </div>
+            <span class="cp_tit"><a>문무관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(5,35.8632032446256,129.193241462091)"
+          id="campus_list_5"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">5</span>
+            </div>
+            <span class="cp_tit"><a>진흥관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(6,35.8638486722822,129.191449409679)"
+          id="campus_list_6"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">6</span>
+            </div>
+            <span class="cp_tit"
+              ><a>금장생활관(금장생활관(보현/미륵/관음/문수동)</a></span
+            >
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(7,35.8610709174392,129.197012558495)"
+          id="campus_list_7"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">7</span>
+            </div>
+            <span class="cp_tit"><a>한의학관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(8,35.8653441397659,129.190970328559)"
+          id="campus_list_8"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">8</span>
+            </div>
+            <span class="cp_tit"><a>금장생활관(연화동)</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(9,35.86615398046826,129.194977720653)"
+          id="campus_list_9"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">9</span>
+            </div>
+            <span class="cp_tit"><a>정각원</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(10,35.860586186340996,129.1955574497556)"
+          id="campus_list_10"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">10</span>
+            </div>
+            <span class="cp_tit"><a>정문</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(11,35.86309458962704,129.19659798932682)"
+          id="campus_list_11"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">11</span>
+            </div>
+            <span class="cp_tit"><a>자연과학관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(12,35.863062601804536,129.19144436414584)"
+          id="campus_list_12"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">12</span>
+            </div>
+            <span class="cp_tit"><a>조형관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(13,35.864100564383335,129.19554095932278)"
+          id="campus_list_13"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">13</span>
+            </div>
+            <span class="cp_tit"><a>노천광장</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(14,35.86049983027403,129.19448968515783)"
+          id="campus_list_14"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">14</span>
+            </div>
+            <span class="cp_tit"><a>대운동장</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(15,35.862929365697624,129.19787192510844)"
+          id="campus_list_15"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">15</span>
+            </div>
+            <span class="cp_tit"><a>동국대학교 부속유치원</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(16,35.862525123627854,129.19188893320077)"
+          id="campus_list_16"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">16</span>
+            </div>
+            <span class="cp_tit"><a>영산관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(17,35.86117458582743,129.1962710308215)"
+          id="campus_list_17"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">17</span>
+            </div>
+            <span class="cp_tit"><a>테니스코트, 골프연습</a>장</span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(19,35.866292145842635,129.19111266682967)"
+          id="campus_list_19"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">18</span>
+            </div>
+            <span class="cp_tit"><a>석림원</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(20,35.86306555694647,129.19263992652841)"
+          id="campus_list_20"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">19</span>
+            </div>
+            <span class="cp_tit"><a>창업보육센터</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(21,35.864775857580845,129.1910044925737)"
+          id="campus_list_21"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">20</span>
+            </div>
+            <span class="cp_tit"><a>금장생활관 법당</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(22,35.86348808136392,129.19207596477614)"
+          id="campus_list_22"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">21</span>
+            </div>
+            <span class="cp_tit"><a>백상관(금장생활관 반야동)</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(23,35.86289767636298,129.19245819251756)"
+          id="campus_list_23"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">22</span>
+            </div>
+            <span class="cp_tit"><a>창업지원센터</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(24,35.8584090035117,129.19525110737337)"
+          id="campus_list_24"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">23</span>
+            </div>
+            <span class="cp_tit"><a>의학관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(25,35.85830866243536,129.1945786893072)"
+          id="campus_list_25"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">24</span>
+            </div>
+            <span class="cp_tit"><a>동물사육동</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(26,35.857889606639844,129.19704648636957)"
+          id="campus_list_26"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">25</span>
+            </div>
+            <span class="cp_tit"><a>동국대학교경주병원(복지동)</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(27,35.85831855089638,129.19674840734336)"
+          id="campus_list_27"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">26</span>
+            </div>
+            <span class="cp_tit"><a>동국대학교경주병원(병원동)</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(28,35.85851509654327,129.19289641571257)"
+          id="campus_list_28"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">27</span>
+            </div>
+            <span class="cp_tit"><a>왕생원</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(29,35.863314697804775,129.1955248094969)"
+          id="campus_list_29"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">28</span>
+            </div>
+            <span class="cp_tit"><a>에너지공학관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(30,35.86587305593181,129.19087142967274)"
+          id="campus_list_30"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">29</span>
+            </div>
+            <span class="cp_tit"><a>석림원공양실</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(31,35.864310623585055,129.19464736406715)"
+          id="campus_list_31"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">30</span>
+            </div>
+            <span class="cp_tit"><a>100주년기념관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(32,35.86578586505424,129.1910821194939)"
+          id="campus_list_32"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">31</span>
+            </div>
+            <span class="cp_tit"><a>사라림</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(33,35.86356247867739,129.19083824840564)"
+          id="campus_list_33"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">32</span>
+            </div>
+            <span class="cp_tit"><a>금강동(금장생활관)</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(34,35.86051510630136,129.1964880437951)"
+          id="campus_list_34"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">33</span>
+            </div>
+            <span class="cp_tit"><a>산학협력관</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(35,35.86143277240115,129.1932369394949)"
+          id="campus_list_35"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">34</span>
+            </div>
+            <span class="cp_tit"><a>대학일자리플러스센터</a></span>
+          </button>
+        </li>
+
+        <li
+          onclick="fn_openInfo(36,35.86547868264247,129.19334846367212)"
+          id="campus_list_36"
+        >
+          <button class="cp_btn">
+            <div class="num_wrap">
+              <span class="cp_idx num">35</span>
+            </div>
+            <span class="cp_tit"><a>선센터</a></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+<!-- Kakao map sdk -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f73fc210df8efd206c6f94ee39305a68&libraries=services,clusterer,drawing" ></script>
+<!-- Main Script -->
+<script type="text/javascript" src="js/script.js"></script>

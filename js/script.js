@@ -413,7 +413,7 @@ function displayOVerlay(data) {
 
   //커스텀 오버레이 생성
   var overlay = new kakao.maps.CustomOverlay({
-    yAnchor: 0,
+    yAnchor: 3,
     position: new kakao.maps.LatLng(data.latitude, data.longitude), // 커스텀 오버레이가 표시 될 위치
     content: content,
   });

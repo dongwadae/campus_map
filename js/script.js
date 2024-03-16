@@ -398,6 +398,7 @@ function fn_openInfo(a, b, c) {
   // 지도 중심을 부드럽게 이동시킵니다
   // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
   map.panTo(new kakao.maps.LatLng(b, c));
+  map.setLevel(LatLng(1));
 }
 
 // 지도 크기 변경 후 relayout

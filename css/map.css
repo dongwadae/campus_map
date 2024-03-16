@@ -242,6 +242,10 @@
 }
 
 /* 마커오버레이 */
+.makerOverlay {
+  width: 50px;
+  height: 25px;
+}
 .makerOverlay .num {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
   left: 0;

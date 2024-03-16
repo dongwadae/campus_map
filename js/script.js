@@ -425,7 +425,7 @@ function displayOVerlay(data) {
     "," +
     data.longitude +
     ');">' +
-    '       <span class="num">' +
+    '       <span class="locpin">' +
     data.ord +
     "</span>" +
     "   </a>" +

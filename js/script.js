@@ -390,15 +390,15 @@ function fn_openInfo(a, b, c) {
   relayout();
   $(".campus_list li").removeClass("on");
   $("#campus_list_" + a).addClass("on");
+  $(".makerOverlay").removeClass("on");
+  $("#markerOverlay_" + a).addClass("on");
+  $(".makerOverlay").addClass("invisible");
+  $("#markerOverlay_" + a).removeClass("invisible");
 
   // 지도 중심을 부드럽게 이동시킵니다
   // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
   map.setLevel(1);
   map.panTo(new kakao.maps.LatLng(b, c));
-  $(".makerOverlay").removeClass("on");
-  $("#markerOverlay_" + a).addClass("on");
-  $(".makerOverlay").addClass("invisible");
-  $("#markerOverlay_" + a).removeClass("invisible");
 }
 
 // 지도 크기 변경 후 relayout

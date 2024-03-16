@@ -357,7 +357,7 @@
   }
   .campus_info.cls {
     left: auto;
-    top: -300px;
+    top: -200px;
   }
   .campus_search {
     height: 40px;
@@ -413,7 +413,7 @@
     height: 200px;
   }
   .campus_info.cls {
-    top: -130px;
+    top: -150px;
   }
 
   /* 지도 */
